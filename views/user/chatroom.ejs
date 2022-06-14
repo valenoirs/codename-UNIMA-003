@@ -1,0 +1,88 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      WAILAN
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+    </div>
+  </div>
+</nav>
+
+<div class="row mt-4" style="margin-left: 0px; margin-right: 0px; padding-left: 50px; padding-right: 50px;">
+    <div class="col">
+      <a href="/" class="">Home</a> / <a href="/ticket">Ticket</a>
+    </div>
+</div>
+<div style="margin-left: 0px; margin-right: 0px; padding-left: 50px; padding-right: 50px;">
+  <hr>
+</div>
+<div class="container" style="overflow: auto;height: 300px; display: flex; flex-direction: column-reverse;">
+  <div class="row mt-4" style="margin-left: 0px; margin-right: 0px; padding-left: 50px; padding-right: 50px;">
+    <table class="table table-borderless" id="myTable" >
+      <thead>
+            <tr>
+              <th style="width: 100px;" scope="col"></th>
+              <!-- <th scope="col"><h4><%= chatroom.subject %></h4></th> -->
+              <th scope="col"></th>
+              <th style="width: 200px;" scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <th scope="row"></th>
+                <td>
+                    <% chatroom.pesan.forEach(pesan => { %>
+                      <% if (!pesan.petugas) { %>
+                          <tr>
+                              <th>
+              
+                              </th>
+                              <td style="text-align: end;">
+                                  <h6><%= pesan.nama %></h6>
+                                  <p class="text-muted"><%= pesan.createdAt.toLocaleTimeString('id', {hour: '2-digit', minute: '2-digit'}) %></p>
+                                  <p class="btn btn-outline-primary"><%= pesan.pesan %></p>
+                              </td>
+                              <td></td>
+                          </tr>
+                      <% } else { %>
+                          <tr>
+                              <th>
+              
+                              </th>
+                              <td>
+                                <h6><%= pesan.nama %></h6>
+                                <p class="text-muted"><%= pesan.createdAt.toLocaleTimeString('id', {hour: '2-digit', minute: '2-digit'}) %></p>
+                                <p class="btn btn-primary"><%= pesan.pesan %></p>
+                              </td>
+                              <td></td>
+                          </tr>
+                          <tr>
+                      <% } %>
+                    <% }) %>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+        </table>
+  </div>
+</div>
+<div style="margin-left: 0px; margin-right: 0px; padding-left: 50px; padding-right: 50px;">
+  <hr>
+</div>
+<div class="row mt-3 mb-3" style="margin-left: 0px; margin-right: 0px; padding-left: 50px; padding-right: 50px;">
+<% if (!chatroom.disabled) { %>
+  <form method="POST" action="/chatroom">
+      <input type="hidden" name="nama" value="<%= chatroom.nameUser %>">
+      <input type="hidden" name="petugas" value="false">
+      <input type="hidden" name="idChatroom" value="<%= chatroom.idChatroom %>">
+    
+      <input style="width: 500px;" type="text" class="form-control mb-1" placeholder="Pesan" name="pesan" aria-describedby="emailHelp" required>
+      <button style="width: 50px;" type="submit" class="btn btn-primary mb-3"><i class="bi bi-send-fill"></i></button>
+  </form>
+<% } else { %>
+  <p>Tiket sudah selesai, jika permasalahan masih belum terselesaikan silahkan ajukan tiket baru.</p>
+<% } %> 
+</div> 

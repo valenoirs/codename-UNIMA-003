@@ -1,0 +1,30 @@
+<div class="row mt-5 mb-5" style="margin-left: 0px; margin-right: 0px; padding-left: 50px; padding-right: 0px;">
+    <% if (error.length > 0) { %>
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <%= error %>.
+          </div>
+    <% } %>
+    <div class="col-5">
+        <h1>Login</h1>
+        <form method="POST" action="/login">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <div class="row">
+                    <input type="text" class="form-control" placeholder="Email" name="email" aria-describedby="emailHelp" required>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <div class="row">
+                    <input type="password" class="form-control" placeholder="Password" name="password" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mb-3">Login</button>
+            <p class="mb-5">Don't have account? <a href="/register">Register!</a>. Or you are an admin? <a href="/petugas/login">Click here!</a></p>
+            </form>
+    </div>
+    <div class="col-7 text-center">
+        <img src="./illust-4.svg" alt="" style="width: 500px; height: 400px;">
+      </div>
+</div>

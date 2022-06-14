@@ -1,0 +1,79 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      WAILAN
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+    </div>
+  </div>
+</nav>
+
+<div class="row mt-4" style="margin-left: 0px; margin-right: 0px; padding-left: 50px; padding-right: 50px;">
+  <div class="col">
+    <a href="/" class="">Home</a> / <a href="/ticket">Ticket</a>
+  </div>
+</div>
+<% if (error.length > 0) { %>
+  <div class="row mt-4" style="margin-left: 0px; margin-right: 0px; padding-left: 50px; padding-right: 50px;">
+    <div class="alert alert-danger alert-dismissible">
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      <%= error %>.
+    </div>
+  </div>
+  <% } %>
+<div class="row mt-4 mb-5" style="margin-left: 0px; margin-right: 0px; padding-left: 50px; padding-right: 50px;">
+<table class="table" id="myTable">
+  <thead class="table">
+      <tr>
+        <th style="width: 100px;" scope="col"></th>
+        <th scope="col">
+          <h4><%= ticket.subject %></h4>
+        </th>
+        <th style="width: 200px;" scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row"></th>
+        <td>
+          Petugas tiket : <i><%= ticket.namePetugas %></i>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="row"></th>
+        <td>
+          Pengaju tiket : <i><%= ticket.nameUser %></i>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="row"></th>
+        <td>
+          <p>Status : <strong><%= ticket.status %></strong></p>
+          <p><%= ticket.keterangan %></p>
+          <br>
+          <%= ticket.createdAt.toLocaleString('id') %>
+          <br>
+          <br>
+          <% if (ticket.status === "Diterima" || ticket.status === "Selesai") { %>
+            <div class="btn-group">
+            <a href="/chatroom/<%= ticket.idChatroom %>" class="btn btn-primary"><i class="bi bi-chat-left-text-fill"></i></a>
+            <% if (!ticket.fixed) { %>
+              <form method="POST" action="/ticket/selesai">
+                <input type="hidden" name="idTicket" value="<%= ticket.idTicket %>">
+                <input type="hidden" name="petugas" name="false">
+                <button type="submit" class="btn btn-success" onclick="return confirm('Are You Sure?')"><i class="bi bi-bookmark-check-fill"></i></button>
+              </form>
+            <% } %>
+            </div>
+          <% } %>
+        </td>
+        <td></td>
+      </tr>
+    </tbody>
+</table>
+</div>

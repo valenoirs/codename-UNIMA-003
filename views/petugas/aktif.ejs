@@ -1,0 +1,115 @@
+<div class="row justify-content-center mt-4">
+    <div class="col">
+      <a style="text-decoration: none;" href="/petugas" class="">Home</a>
+    </div>
+    <div class="col">
+      <input class="form-control me-2" id="myInput" type="search" onkeyup="myFunction()" placeholder="Search" aria-label="Search">
+    </div>
+</div>
+<% if (error.length > 0) { %>
+<div class="row mt-5">
+  <div class="alert alert-danger alert-dismissible">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <%= error %>.
+  </div>
+</div>
+<% } %>
+<div class="row justify-content-center mt-4 mb-5">
+    <div id="semua" class="container tab-pane active"><br>
+      <table class="table table-hover" id="myTable">
+        <thead class="table">
+              <tr>
+                <th style="width: 75px;" scope="col"></th>
+                <th scope="col"></th>
+                <th style="width: 150px;" scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+                <% tickets.forEach((ticket, i) => { %>
+                <tr>
+                  <% if (ticket.status === 'Menunggu') { %>
+                  <th scope="row"><%= i + 1 %> </th>
+                  <td>
+                    <a style="text-decoration: none;" href="/petugas/ticket/<%= ticket.idTicket %>">
+                      <h5><%= ticket.subject %></h5>
+                    </a>
+                    <p><%= ticket.createdAt.toLocaleString('id') %></p>
+                    <p><%= ticket.keterangan %></p>
+                    <h6>Status : <%= ticket.status; %></h6>
+                  </td>
+                  <td class="text-center">
+                    <form class="mt-5" method="POST" action="/ticket/cancel">
+                      <input type="hidden" name="idTicket" value="<%= ticket.idTicket %>">
+                      <button type="submit" class="btn btn-danger" onclick="return confirm('Are You Sure?')"><i class="bi bi-info-circle"></i> Batalkan</button>
+                    </form>
+                  </td>
+                  </tr>
+                  <% } else if (ticket.status === 'Diterima') { %>
+                    <th scope="row"><%= i + 1 %> </th>
+                    <td>
+                      <a style="text-decoration: none;" href="/petugas/ticket/<%= ticket.idTicket %>">
+                        <h5><%= ticket.subject %></h5>
+                      </a>
+                      <p><%= ticket.createdAt.toLocaleString('id') %></p>
+                      <p><%= ticket.keterangan %></p>
+                      <h6>Status : <%= ticket.status; %></h6>
+                    </td>
+                    <td class="text-center">
+                      <div class="btn-group mt-5">
+                        <a href="/petugas/chatroom/<%= ticket.idChatroom %>" class="btn btn-primary"><i class="bi bi-chat-left-text-fill"></i></a>
+                        <form method="POST" action="/ticket/selesai">
+                          <input type="hidden" name="idTicket" value="<%= ticket.idTicket %>">
+                          <input type="hidden" name="petugas" value="false">
+                          <button type="submit" class="btn btn-success" onclick="return confirm('Are You Sure?')"><i class="bi bi-bookmark-check-fill"></i></button>
+                        </form>
+                      </div>
+                    </td>
+                    </tr>
+                  <% } else if(ticket.status === 'Ditolak') { %> 
+                    <th scope="row"><%= i + 1 %> </th>
+                    <td>
+                      <a style="text-decoration: none;" href="/petugas/ticket/<%= ticket.idTicket %>">
+                        <h5><%= ticket.subject %></h5>
+                      </a>
+                      <p><%= ticket.createdAt.toLocaleString('id') %></p>
+                      <p><%= ticket.keterangan %></p>
+                      <h6>Status : <%= ticket.status; %></h6>
+                    </td>
+                    <td class="text-center">
+                      <h6 class="text-danger mt-5"><i class="bi bi-info-circle"></i> Ditolak</h6>
+                    </td>
+                    </tr>
+                  <% } else if(ticket.status === 'Dibatalkan') { %> 
+                    <th scope="row"><%= i + 1 %> </th>
+                    <td>
+                      <a style="text-decoration: none;" href="/petugas/ticket/<%= ticket.idTicket %>">
+                        <h5><%= ticket.subject %></h5>
+                      </a>
+                      <p><%= ticket.createdAt.toLocaleString('id') %></p>
+                      <p><%= ticket.keterangan %></p>
+                      <h6>Status : <%= ticket.status; %></h6>
+                    </td>
+                    <td class="text-center">
+                      <h6 class="text-danger mt-5"><i class="bi bi-info-circle"></i> Dibatalkan</h6>
+                    </td>
+                    </tr>
+                  <% } else if(ticket.status === 'Selesai') { %>
+                    <th scope="row"><%= i + 1 %> </th>
+                    <td>
+                      <a style="text-decoration: none;" href="/petugas/ticket/<%= ticket.idTicket %>">
+                        <h5><%= ticket.subject %></h5>
+                      </a>
+                      <p><%= ticket.createdAt.toLocaleString('id') %></p>
+                      <p><%= ticket.keterangan %></p>
+                      <h6>Status : <%= ticket.status; %></h6>
+                    </td>
+                    <td class="text-center">
+                      <h6 class="text-success mt-5"><i class="bi bi-info-circle"></i> Selesai</h6>
+                    </td>
+                    </tr>
+                  <% } %>
+                <% }) %>
+              </tbody>
+      </table>
+  </div>
+</div>

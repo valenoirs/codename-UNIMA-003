@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <img src="./logo_kominfo.png" alt="" height="34px">
+        WAILAN
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+      </div>
+    </div>
+</nav>
+
+<div class="row mt-5" style="margin-left: 0px; margin-right: 0px; padding-left: 50px; padding-right: 0px;">
+    <% if (error.length > 0) { %>
+        <div class="row mt-5">
+          <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <%= error %>.
+          </div>
+        </div>
+        <% } %>
+    <div class="col-5">
+        <h1>Submit Ticket</h1>
+        <form method="POST" action="/ticket">
+            <div class="mb-3">
+                <label for="name" class="form-label">Subject</label>
+                <div class="row">
+                    <input type="text" class="form-control" style="width: 35rem;" placeholder="Subject" name="subject" required>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Keterangan</label>
+                <div class="row">
+                    <textarea class="form-control" style="width: 35rem; resize: none;" placeholder="Keterangan" name="keterangan" rows="5" required></textarea>
+                </div>
+            </div>
+            <input type="hidden" name="idUser" value="<%= idUser %>">
+            <button type="submit" class="btn btn-primary mb-3"><i class="bi bi-arrow-down-right-square-fill"></i> Submit</button>
+            </form>
+    </div>
+    <div class="col-7 text-center">
+      <img src="./illust-3.png" alt="">
+    </div>
+</div>

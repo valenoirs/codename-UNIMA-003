@@ -1,0 +1,77 @@
+<div class="row mt-4">
+  <div class="col">
+    <a href="/petugas" class="">Home</a> / <a href="/petugas/ticket">Ticket</a>
+  </div>
+</div>
+<% if (error.length > 0) { %>
+  <div class="row mt-5">
+    <div class="alert alert-danger alert-dismissible">
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      <%= error %>.
+    </div>
+  </div>
+  <% } %>
+<div class="row justify-content-center mt-4 mb-5">
+  <table class="table" id="myTable">
+    <thead class="table">
+          <tr>
+            <th style="width: 100px;" scope="col"></th>
+            <th scope="col"><h4><%= ticket.subject %></h4></th>
+            <th style="width: 200px;" scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"></th>
+            <td>
+              Petugas tiket : <i><%= ticket.namePetugas %></i>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row"></th>
+            <td>
+              Pengaju tiket : <i><%= ticket.nameUser %></i>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row"></th>
+            <td>
+              <p>Status : <strong><%= ticket.status %></strong></p>
+              <p><%= ticket.keterangan %></p>
+              <br>
+              <%= ticket.createdAt.toLocaleString('id') %>
+              <br>
+              <br>
+              <% if (ticket.idPetugas === idPetugas) { %>
+                <% if (ticket.status === "Diterima" || ticket.status === "Selesai") { %>
+                  <div class="btn-group">
+                  <a href="/petugas/chatroom/<%= ticket.idChatroom %>" class="btn btn-primary"><i class="bi bi-chat-left-text-fill"></i></a>
+                  <% if (!ticket.fixed) { %>
+                    <form method="POST" action="/ticket/selesai">
+                      <input type="hidden" name="idTicket" value="<%= ticket.idTicket %>">
+                      <input type="hidden" name="petugas" name="true">
+                      <button type="submit" class="btn btn-success" onclick="return confirm('Are You Sure?')"><i class="bi bi-bookmark-check-fill"></i></button>
+                    </form>
+                  <% } %>
+                  </div>
+                <% } %>
+              <% } else if (ticket.status === "Menunggu") {%>
+                <div class="btn-group">
+                  <form method="POST" action="/ticket/approve">
+                    <input type="hidden" name="idTicket" value="<%= ticket.idTicket %>">
+                    <button type="submit" class="btn btn-success" onclick="return confirm('Are You Sure?')"><i class="bi bi-file-earmark-check-fill"></i></button>
+                  </form>
+                  <form method="POST" action="/ticket/decline">
+                    <input type="hidden" name="idTicket" value="<%= ticket.idTicket %>">
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are You Sure?')"><i class="bi bi-file-earmark-excel-fill"></i></button>
+                  </form>
+                </div>
+              <% } %>
+            </td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+</div>
