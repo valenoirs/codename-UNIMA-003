@@ -103,6 +103,6 @@ exports.Logout = async (req, res, next) => {
     }
     catch (error){
         console.error('logout-error', error);
-        return res.redirect('/');
+        return res.redirect('/petugas/login');
     }
 };
