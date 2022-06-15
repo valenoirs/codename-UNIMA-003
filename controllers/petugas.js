@@ -24,19 +24,19 @@ module.exports.Register = async (req, res, next) => {
         if(petugas){
             console.log('Petugas with same email found!');
             req.flash('error', 'Email sudah terdaftar!');
-            return res.redirect('/petugas/wailan/kominfo/tomohon/register');
+            return res.redirect('/petugas/pengaduan/kominfo/tomohon/register');
         }
 
         if(req.body.password.length < 8){
             console.log('Password length less than 8 characters!')
             req.flash('error', 'Password terlalu singkat!');
-            return res.redirect('/petugas/wailan/kominfo/tomohon/register');
+            return res.redirect('/petugas/pengaduan/kominfo/tomohon/register');
         }
 
         if(req.body.password !== req.body.confirmPassword){
             console.log('Password validation error!')
             req.flash('error', 'Konfirmasi password salah!');
-            return res.redirect('/petugas/wailan/kominfo/tomohon/register');
+            return res.redirect('/petugas/pengaduan/kominfo/tomohon/register');
         }
 
         delete req.body.confirmPassword;
@@ -55,7 +55,7 @@ module.exports.Register = async (req, res, next) => {
     catch (error) {
         console.error('register-error', error);
         req.session.error = "Register Error";
-        return res.redirect('/petugas/wailan/kominfo/tomohon/register');
+        return res.redirect('/petugas/pengaduan/kominfo/tomohon/register');
     }
 };
 

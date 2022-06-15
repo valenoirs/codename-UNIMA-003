@@ -14,7 +14,7 @@ const sendEmail = async (email, balasan) => {
         let mailOption = {
             from: process.env.HOST_EMAIL_ADDRESS,
             to: email,
-            subject: 'Tiket WAILAN Diskominfo Kota Tomohon',
+            subject: 'Tiket Pengaduan Diskominfo Kota Tomohon',
             text: balasan
         };
 

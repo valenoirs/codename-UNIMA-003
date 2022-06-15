@@ -94,7 +94,7 @@ exports.Approve = async (req, res, next) => {
             subject: ticket.subject,
         })
 
-        sendMail(ticket.emailUser, 'Ticket anda diterima oleh petugas, anda dapat menghubungi petugas melalui WAILAN atau melalui link berikut : null');
+        sendMail(ticket.emailUser, 'Ticket anda diterima oleh petugas, anda dapat menghubungi petugas melalui Website Layanan Pengaduan');
 
         console.log('Ticket approved!');
         return res.redirect('/petugas/ticket');
