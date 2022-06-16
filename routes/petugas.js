@@ -24,7 +24,7 @@ router.get('/login', (req, res) => {
     }
 });
 
-router.get('/pengaduan/kominfo/tomohon/register', (req, res) => {
+router.get('/pengaduan/kominfo/manado/register', (req, res) => {
     if(!req.session.idPetugas){
         res.render('petugas/register', {title: 'Register - Petugas', layout: 'layouts/petugas-layout', error: req.flash('error')});
     }

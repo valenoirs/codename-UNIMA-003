@@ -52,7 +52,7 @@ app.use(express.static('public'));
 
 // Connect to database
 mongoose.connect(process.env.DB_URI)
-.then(() => console.log(`Connected to Local MongoDB`))
+.then(() => console.log(`Connected to MongoDB`))
 .catch((error) => console.log(error));
 
 // HTTP Routes

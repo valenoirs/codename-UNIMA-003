@@ -12,7 +12,7 @@
   </div>
 </nav>
 
-<div class="row mt-4" style="margin-left: 0px; margin-right: 0px; padding-left: 50px; padding-right: 50px;">
+<div class="row mt-4" style="margin-left: 0px; margin-right: 0px; padding-left: 50px; padding-right: 50px;" data-aos="fade-up">
     <div class="col">
       <a style="text-decoration: none;" href="/" class=""><i class="bi bi-house-door-fill"></i> Home</a>
     </div>
@@ -21,14 +21,14 @@
     </div>
 </div>
 <% if (error.length > 0) { %>
-  <div class="row mt-4" style="margin-left: 0px; margin-right: 0px; padding-left: 50px; padding-right: 50px;">
+  <div class="row mt-4" style="margin-left: 0px; margin-right: 0px; padding-left: 50px; padding-right: 50px;" data-aos="fade-up">
     <div class="alert alert-danger alert-dismissible">
       <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
       <%= error %>.
     </div>
   </div>
   <% } %>
-<div class="row mt-4 mb-5" style="margin-left: 0px; margin-right: 0px; padding-left: 50px; padding-right: 50px;">
+<div class="row mt-4 mb-5" style="margin-left: 0px; margin-right: 0px; padding-left: 50px; padding-right: 50px;" data-aos="fade-up">
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
       <li class="nav-item">
@@ -71,7 +71,7 @@
                       <a style="text-decoration: none;" href="/ticket/<%= ticket.idTicket %>">
                         <h5><%= ticket.subject %></h5>
                       </a>
-                      <p><%= ticket.createdAt.toLocaleString('id') %></p>
+                      <p><%= ticket.createdAt.toLocaleString('id', {day:'numeric', month:'long', year:'numeric', hour:'2-digit', minute:'2-digit'}) %></p>
                       <p><%= ticket.keterangan %></p>
                       <h6>Status : <%= ticket.status; %></h6>
                     </td>
@@ -88,7 +88,7 @@
                         <a style="text-decoration: none;" href="/ticket/<%= ticket.idTicket %>">
                           <h5><%= ticket.subject %></h5>
                         </a>
-                        <p><%= ticket.createdAt.toLocaleString('id') %></p>
+                        <p><%= ticket.createdAt.toLocaleString('id', {day:'numeric', month:'long', year:'numeric', hour:'2-digit', minute:'2-digit'}) %></p>
                         <p><%= ticket.keterangan %></p>
                         <h6>Status : <%= ticket.status; %></h6>
                       </td>
@@ -109,7 +109,7 @@
                         <a style="text-decoration: none;" href="/ticket/<%= ticket.idTicket %>">
                           <h5><%= ticket.subject %></h5>
                         </a>
-                        <p><%= ticket.createdAt.toLocaleString('id') %></p>
+                        <p><%= ticket.createdAt.toLocaleString('id', {day:'numeric', month:'long', year:'numeric', hour:'2-digit', minute:'2-digit'}) %></p>
                         <p><%= ticket.keterangan %></p>
                         <h6>Status : <%= ticket.status; %></h6>
                       </td>
@@ -123,7 +123,7 @@
                         <a style="text-decoration: none;" href="/ticket/<%= ticket.idTicket %>">
                           <h5><%= ticket.subject %></h5>
                         </a>
-                        <p><%= ticket.createdAt.toLocaleString('id') %></p>
+                        <p><%= ticket.createdAt.toLocaleString('id', {day:'numeric', month:'long', year:'numeric', hour:'2-digit', minute:'2-digit'}) %></p>
                         <p><%= ticket.keterangan %></p>
                         <h6>Status : <%= ticket.status; %></h6>
                       </td>
@@ -137,7 +137,7 @@
                         <a style="text-decoration: none;" href="/ticket/<%= ticket.idTicket %>">
                           <h5><%= ticket.subject %></h5>
                         </a>
-                        <p><%= ticket.createdAt.toLocaleString('id') %></p>
+                        <p><%= ticket.createdAt.toLocaleString('id', {day:'numeric', month:'long', year:'numeric', hour:'2-digit', minute:'2-digit'}) %></p>
                         <p><%= ticket.keterangan %></p>
                         <h6>Status : <%= ticket.status; %></h6>
                       </td>
@@ -168,7 +168,7 @@
                           <a style="text-decoration: none;" href="/ticket/<%= ticket.idTicket %>">
                             <h5><%= ticket.subject %></h5>
                           </a>
-                          <p><%= ticket.createdAt.toLocaleString('id') %></p>
+                          <p><%= ticket.createdAt.toLocaleString('id', {day:'numeric', month:'long', year:'numeric', hour:'2-digit', minute:'2-digit'}) %></p>
                           <p><%= ticket.keterangan %></p>
                           <h6>Status : <%= ticket.status; %></h6>
                         </td>
@@ -206,7 +206,7 @@
                           <a style="text-decoration: none;" href="/ticket/<%= ticket.idTicket %>">
                             <h5><%= ticket.subject %></h5>
                           </a>
-                          <p><%= ticket.createdAt.toLocaleString('id') %></p>
+                          <p><%= ticket.createdAt.toLocaleString('id', {day:'numeric', month:'long', year:'numeric', hour:'2-digit', minute:'2-digit'}) %></p>
                           <p><%= ticket.keterangan %></p>
                           <h6>Status : <%= ticket.status; %></h6>
                         </td>
@@ -240,7 +240,7 @@
                         <a style="text-decoration: none;" href="/ticket/<%= ticket.idTicket %>">
                           <h5><%= ticket.subject %></h5>
                         </a>
-                        <p><%= ticket.createdAt.toLocaleString('id') %></p>
+                        <p><%= ticket.createdAt.toLocaleString('id', {day:'numeric', month:'long', year:'numeric', hour:'2-digit', minute:'2-digit'}) %></p>
                         <p><%= ticket.keterangan %></p>
                         <h6>Status : <%= ticket.status; %></h6>
                       </td>
@@ -271,7 +271,7 @@
                         <a style="text-decoration: none;" href="/ticket/<%= ticket.idTicket %>">
                           <h5><%= ticket.subject %></h5>
                         </a>
-                        <p><%= ticket.createdAt.toLocaleString('id') %></p>
+                        <p><%= ticket.createdAt.toLocaleString('id', {day:'numeric', month:'long', year:'numeric', hour:'2-digit', minute:'2-digit'}) %></p>
                         <p><%= ticket.keterangan %></p>
                         <h6>Status : <%= ticket.status; %></h6>
                       </td>
@@ -302,7 +302,7 @@
                         <a style="text-decoration: none;" href="/ticket/<%= ticket.idTicket %>">
                           <h5><%= ticket.subject %></h5>
                         </a>
-                        <p><%= ticket.createdAt.toLocaleString('id') %></p>
+                        <p><%= ticket.createdAt.toLocaleString('id', {day:'numeric', month:'long', year:'numeric', hour:'2-digit', minute:'2-digit'}) %></p>
                         <p><%= ticket.keterangan %></p>
                         <h6>Status : <%= ticket.status; %></h6>
                       </td>

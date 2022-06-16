@@ -99,6 +99,7 @@ exports.Logout = async (req, res, next) => {
         delete req.session.idPetugas;
         delete req.session.namaPetugas;
 
+        console.log('Petugas logged out!')
         return res.redirect('/petugas/login');
     }
     catch (error){
