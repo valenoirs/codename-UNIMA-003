@@ -18,15 +18,15 @@
         <div class="modal-body">
           <p>
             Nama : 
-            <strong><%= user.name %></strong>
+            <span class="text-primary"><%= user.name %></span>
           </p>
           <p>
             Tanggal Lahir : 
-            <strong><%= user.birth.toLocaleDateString('id', { year: 'numeric', month: 'long', day: 'numeric'}) %></strong>
+            <span class="text-primary"><%= user.birth.toLocaleDateString('id', { year: 'numeric', month: 'long', day: 'numeric'}) %></span>
           </p>
           <p>
             E-mail : 
-            <strong><%= user.email %></strong>
+            <span class="text-primary"><%= user.email %></span>
           </p>
           <!-- <br>
           <a class="btn btn-primary" href="/profile/edit"><i class="bi bi-pencil-square"></i> Edit</a> -->
