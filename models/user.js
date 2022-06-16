@@ -6,7 +6,6 @@ const User = mongoose.model('User', new mongoose.Schema({
     password: {type: String, required: [true, 'User password required!']},
     birth: {type: Date, required: [true, 'User tanggal lahir required!']},
     name: {type: String,  required: [true, 'Username required!']},
-    gender: {type: String, required: [true, 'User gender required']},
 },
 {
     timestamps: {
